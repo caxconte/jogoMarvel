@@ -1,0 +1,28 @@
+<div class="ht-100 container dark-theme">
+  <app-error-message [text]="errors.message"
+                    [error]="errors.characterSearch"
+                    [attempts]="errors.attempts"></app-error-message>
+
+  <div class="ht-100 flex screen">
+    <div *ngIf="!isReadyPlayers()"
+          class="flex select-players">
+      <app-select-players (eventKeyupEnter)="nameSearchEnter($event)">
+      </app-select-players>
+
+      <button type="button" (click)="readyPlayers()"
+              class="btn cursor-pointer">
+        Ready
+      </button>
+    </div>
+
+    <app-game-board *ngIf="isReadyPlayers()"
+                    (playerWin)="playerWinPoint($event)">
+    </app-game-board>
+
+    <div class="flex thumbnail">
+      <app-thumbnail *ngFor="let thumbnail of characters"
+                      [thumbnail]="thumbnail">
+      </app-thumbnail>
+    </div>
+  </div>
+</div>

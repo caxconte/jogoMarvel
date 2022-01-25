@@ -1,0 +1,11 @@
+<div class="ht-100 flex thumbnail"
+    [style.flexDirection]="thumbnail?.flexDirectionThumbnail"
+    >
+  <div class="flex photo" [style.margin]="thumbnail?.marginPhoto">
+    <app-photo [image]="thumbnail?.characterImage"
+              [name]="thumbnail?.characterName">
+    </app-photo>
+    <span class="name font-family-press-start">{{ thumbnail?.characterName }}</span>
+  </div>
+  <div class="points font-family-press-start">{{ thumbnail?.points }}</div>
+</div>

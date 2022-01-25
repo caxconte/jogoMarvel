@@ -1,0 +1,31 @@
+<div class="flex game-board">
+  <div>
+    <div class="first-player font-family-press-start"
+          *ngIf="!empate && !victory">
+      Vez do player {{ player }}
+    </div>
+    <div *ngFor="let rows of gameBoard; let i = index"
+          class="flex">
+      <div *ngFor="let cols of rows; let j = index"
+            class="square cursor-pointer"
+            (click)="play(i, j)"
+            [ngClass]="{
+              'x': showX(i,j),
+              'o': showO(i,j)
+            }">
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="empate" class="player-win-or-empate font-family-press-start">
+    <span>Velha!</span>
+  </div>
+  <div *ngIf="victory" class="player-win-or-empate font-family-press-start">
+    Player {{ finisher.player }} venceu!
+  </div>
+  <button *ngIf="empate || victory"
+          (click)="initGameBoard()"
+          class="btn cursor-pointer">
+          Jogar novamente
+  </button>
+</div>
